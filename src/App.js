@@ -1,15 +1,13 @@
 import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 import myEpicNFT from "./utils/MyEpicNFT.json";
+
 import twitterLogo from './assets/twitter-logo.svg';
 import './styles/App.css';
 
-const CONTRACT_ADDRESS = "0xeA893b1584DBDDC3f5E826752D571E40544F7801";
-
-// Constants
+const CONTRACT_ADDRESS = "0xf4E40AFede984ec4894620Ea60a7690EE1374F7B";
 const TWITTER_HANDLE = 'lyndipc';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
-const OPENSEA_LINK = 'https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}';
 const TOTAL_MINT_COUNT = 50;
 
 const App = () => {
@@ -138,7 +136,7 @@ const App = () => {
           {currentAccount === "" ? renderNotConnectedContainer() : renderMintUI()}
         </div>
         <div>
-          <button className="cta-button opensea-button"><a href="https://testnets.opensea.io/collection/epicnft-v4">View EpicNFT on OpenSea</a></button>
+          <button className="cta-button opensea-button"><a href="https://testnets.opensea.io/collection/epicnft-9dfcjhyzhh">View EpicNFT on OpenSea</a></button>
         </div>
         <div className="footer-container">
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
