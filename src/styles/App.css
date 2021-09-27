@@ -65,6 +65,11 @@
   background-color: rgb(32, 129, 226);
 }
 
+.opensea-button a {
+  color: white;
+  text-decoration: none;
+}
+
 .mint-count {
   color: white;
   font-size: 18px;
