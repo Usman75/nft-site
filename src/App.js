@@ -4,14 +4,17 @@ import myEpicNFT from "./utils/MyEpicNFT.json";
 import twitterLogo from './assets/twitter-logo.svg';
 import './styles/App.css';
 
+const CONTRACT_ADDRESS = "0xeA893b1584DBDDC3f5E826752D571E40544F7801";
+
 // Constants
-const TWITTER_HANDLE = '_buildspace';
+const TWITTER_HANDLE = 'lyndipc';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
-const OPENSEA_LINK = '';
+const OPENSEA_LINK = 'https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}';
 const TOTAL_MINT_COUNT = 50;
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
+  const [mining, setMining] = useState(false);
 
   const checkWalletConnection = async () => {
     const { ethereum } = window;
@@ -28,6 +31,7 @@ const App = () => {
       const account = accounts[0];
       console.log("Found an authorized account: ", account);
       setCurrentAccount(account);
+      setupEventListener();
     } else {
       console.log("No authorized account found");
     }
@@ -46,13 +50,42 @@ const App = () => {
       console.log("Connected", accounts[0]);
       setCurrentAccount(accounts[0]);
 
+      setupEventListener();
     } catch (error) {
       console.log(error);
     }
   }
 
+  const setupEventListener = async () => {
+    try {
+      const { ethereum } = window;
+
+      if (ethereum) {
+        let network = window.ethereum.networkVersion;
+        console.log('network: ', network);
+        if (network !== '4') {
+          console.log("Please connect to the Rinkeby network to sign in");
+        }
+        // Your wallet is connected to the Rinkeby test network. To use OpenSea on Rinkeby, please switch to testnets.opensea.io
+
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, myEpicNFT.abi, signer);
+
+        connectedContract.on("NewEpicNFTMinted", (from, tokenId) => {
+          console.log(from, tokenId.toNumber());
+          alert(`Hey there! We've minted your NFT and sent it to your wallet. It may be blank right now. It can take a max of 10 min to show up on OpenSea. Here's the link: https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`)
+        });
+        console.log("Set up event listener!");
+      } else {
+        console.log("Ethereum object doesn't exist!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }  
+
   const askContractToMintNft = async () => {
-    const CONTRACT_ADDRESS = "0xC244a18272745bC102B944fa9F40903b52ce8493";
     try {
       const { ethereum } = window;
 
@@ -64,9 +97,10 @@ const App = () => {
         console.log("Time to pay for gas...")
         let nftTxn = await connectedContract.makeAnEpicNFT();
 
+        setMining(true);
         console.log("Mining...please wait.");
         await nftTxn.wait();
-
+        setMining(false);
         console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`);
       } else {
         console.log("Ethereum object doesn't exist!");
@@ -88,8 +122,8 @@ const App = () => {
   );
 
   const renderMintUI = () => (
-    <button onClick={askContractToMintNft} className="cta-button connect-wallet-button">
-      Mint NFT
+    <button onClick={askContractToMintNft} className="cta-button mint-button">
+      { !mining ? "Mint NFT" : "Minting...please wait" }
     </button>
   );
 
@@ -103,6 +137,9 @@ const App = () => {
           </p>
           {currentAccount === "" ? renderNotConnectedContainer() : renderMintUI()}
         </div>
+        <div>
+          <button className="cta-button opensea-button"><a href="https://testnets.opensea.io/collection/epicnft-v4">View EpicNFT on OpenSea</a></button>
+        </div>
         <div className="footer-container">
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
           <a
@@ -110,7 +147,7 @@ const App = () => {
             href={TWITTER_LINK}
             target="_blank"
             rel="noreferrer"
-          >{`built on @${TWITTER_HANDLE}`}</a>
+          >{`built by @${TWITTER_HANDLE}`}</a>
         </div>
       </div>
     </div>
