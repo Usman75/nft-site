@@ -1,11 +1,30 @@
-# _buildspace Mint Your Own NFT Collection
+# EpicNFT Collection
+An open source user interface for the EpicNFT collection -- a simple NFT minting application.
 
+
+# Live Demo
+Check out the live demo [here](https://deneb-react.vercel.app)
+
+
+# Usage
 ### **Welcome 👋**
-To get started with this course, clone this repo and follow these commands:
+If you'd like to use this code as a baseline for your own NFT project: just 
 
-1. Run `npm install` at the root of your directory
-2. Run `npm run start` to start the project
-3. Start coding!
+1. Fork this repo
+2. Install dependencies 
+3. Begin coding!
+
+```
+$ npm install .
+OR
+$ yarn add .
+```
+
+
+# Technologies
+
+This application was built with [create-react-app](https://create-react-app.dev)
+
 
 ### **Questions?**
-Have some questions make sure you head over to your [_buildspace Dashboard](https://app.buildspace.so/courses/CO961ddb5f-f428-4608-9949-a9a2f461eb3f) and link your Discord account so you can get access to helpful channels and your instructor!
+Have some thoughts or questions you would like to share? Send a message over at [LyndiPC](https://lyndipc.dev) and I'll respond to you ASAP!
