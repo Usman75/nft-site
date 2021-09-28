@@ -1,30 +1,59 @@
 # EpicNFT Collection
-An open source user interface for the EpicNFT collection -- a simple NFT minting application.
 
+An open source user interface for the EpicNFT collection -- a simple NFT minting application. The repository for the EpicNFT minter can be found [here](https://github.com/lyndipc/nft-minter)
 
 # Live Demo
-Check out the live demo [here](https://deneb-react.vercel.app)
 
+Check out the live demo [here](https://epic-nft-six.vercel.app/)
 
-# Usage
-### **Welcome 👋**
-If you'd like to use this code as a baseline for your own NFT project: just 
+# Getting Started
+
+If you'd like to use this code as a baseline for your own NFT project's interface:
 
 1. Fork this repo
-2. Install dependencies 
+2. Install dependencies
 3. Begin coding!
 
 ```
+$ cd {ROOT_DIRECTORY}
+
 $ npm install .
+
 OR
+
 $ yarn add .
 ```
 
-
 # Technologies
 
-This application was built with [create-react-app](https://create-react-app.dev)
+Technologies used to build this app:
 
+[create-react-app](https://create-react-app.dev)
+
+# Testing
+
+Test cases coming soon!
+
+# License
+
+```
+ISC License
+
+Copyright (c) [year] [fullname]
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+```
 
 ### **Questions?**
-Have some thoughts or questions you would like to share? Send a message over at [LyndiPC](https://lyndipc.dev) and I'll respond to you ASAP!
+
+Have some thoughts or questions you would like to share? Notice room for improvement? Send a message over at [LyndiPC](https://lyndipc.dev) and I'll respond to you ASAP!
